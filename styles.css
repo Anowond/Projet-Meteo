@@ -1,0 +1,21 @@
+/* * {
+    background-image: ;
+} */
+
+.header {
+  display: flex;
+  flex-direction: space-around;
+  margin: 50px;
+}
+.bar {
+  font-size: 16px;
+  margin: 50px;
+}
+.search-bar {
+  background-color: aqua;
+}
+.today {
+  display: flex;
+  margin: 50px;
+  font-size: 20px;
+}
