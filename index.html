@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./main_scripts.js" defer></script>
-    <link rel="stylesheet" href="./styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+      integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./scripts/api.js" defer></script>
+    <script type="module" src="./scripts/main.js" defer></script>
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>API Météo</title>
   </head>
+
   <body>
     <div class="header">
       <p>Menu</p>
@@ -15,7 +23,37 @@
     <div class="bar">
       <input type="text" placeholder="Saisissez la Location" id="search-bar" />
     </div>
-    <div class="today">météo ici</div>
+    <div class="today">
+      <div class="ville">
+        <p id="ville_localisation">Paris, France</p>
+        <p id="favourite_toggle">
+          <img src="./img/star_empty.png" id="star-menu" />
+        </p>
+      </div>
+      <div id="main_jour">
+        <div id="temps_jour">
+          <p id="icon_today">
+            <img src="./img/weather/64x64/day/116.png" id="weatherIconBig" />
+          </p>
+          <p id="weather_today">Nuageux</p>
+        </div>
+        <div id="info_jour">
+          <p id="temperature">15° Celsius</p>
+          <section id="mini_info">
+            <p id="wet_today">40%</p>
+            <p id="wind_today">10km/h</p>
+            <p id="aqi_today">Good</p>
+            <p id="uv_today">UV 2</p>
+          </section>
+        </div>
+      </div>
+      <div id="soleil_info">
+        <p>Levée de Soleil</p>
+        <p id="soleil_leve">8h21</p>
+        <p>Couchée de Soleil</p>
+        <p id="soleil_couche">19h47</p>
+      </div>
+    </div>
     <div>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam,
       facilis sapiente ab eum sed ex similique, quod earum architecto, eius
