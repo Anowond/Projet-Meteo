@@ -4,6 +4,11 @@ body {
   background-repeat: no-repeat;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   display: flex;
   margin: 30px;
@@ -13,6 +18,8 @@ body {
 
 #star-menu {
   width: 30px;
+  height: 30px;
+
 }
 
 .bar {
@@ -29,6 +36,57 @@ body {
 }
 
 .today {
+  margin: 20px;
+  padding: 20px;
+  border: 1px black solid;
+}
+.ville {
+  display: flex;
+  margin: 20px;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+#main_jour {
+  display: flex;
+  margin: 20px;
+}
+#temps_jour {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 20px;
+}
+#weatherIconBig {
+  width: 5em;
+  height: auto;
+}
+#info_jour {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#temperature {
+  font-size: 20px;
+  margin: 30px 0px;
+}
+#mini_info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+#soleil_info {
+  display: grid;
+  grid-template-columns: 9em 3em;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  justify-content: center;
+}
+
   display: flex;
   margin: 40px;
   padding: 80px;
