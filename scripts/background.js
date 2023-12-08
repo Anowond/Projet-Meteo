@@ -87,3 +87,45 @@ for(let object in tableauAPI){
     }
 }
 //backgroundUpdate()
+
+function AQIColourUpdate(){
+    for(let object in tableauAPI){
+        for (let info in object.current){
+            for (let air_quality in info.air_quality){
+                switch(air_quality[us-epa-index]){
+                //switch(weatherToday){
+                    case '1' :
+                    document.body.style.backgroundImage = "url('../img/sunny.jpg')";
+                    break;
+                    case '2' :
+                        document.body.style.backgroundImage = 'url("../img/cloud.jpg")';
+                        break;
+                    case '3' :
+                        document.body.style.backgroundImage = 'url("../img/fog.jpg")';
+                        break;
+                    case '4' :
+                        document.body.style.backgroundImage = 'url("../img/rain.jpg")';
+                        break;
+                    case '5' :
+                        document.body.style.backgroundImage = 'url("../img/snow.jpg")';
+                        break;
+                    case '6' :
+                        document.body.style.backgroundImage = 'url("../img/sleet.jpg")';
+                        break;
+                    case '7' :
+                        document.body.style.backgroundImage = 'url("../img/drizzle.jpg")';
+                        break;
+                    case '8' :
+                        document.body.style.backgroundImage = 'url("../img/thunder.jpg")';
+                        break;
+                    case '9' :
+                        document.body.style.backgroundImage = 'url("../img/blizzard.jpg")';
+                        break;
+                    case '10' :
+                        document.body.style.backgroundImage = 'url("../img/shower.jpg")';
+                        break;
+                    }
+                }
+            }
+        }
+    }
