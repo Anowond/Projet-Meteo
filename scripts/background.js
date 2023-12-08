@@ -2,6 +2,7 @@ import getResponse from "./api.js"
 
 let tableauAPI = await getResponse("Alençon")
 
+function backgroundUpdate(weatherToday){
 for(let object in tableauAPI){
     for (let info in object.current){
         for (let weather in info.condition){
@@ -43,6 +44,7 @@ for(let object in tableauAPI){
                 case '1069' :
                 case '1204' :
                 case '1207' :
+                case '1237' :
                     document.body.style.backgroundImage = 'url("../img/sleet.jpg")';
                     break;
                 case '1072' :
@@ -52,17 +54,33 @@ for(let object in tableauAPI){
                 case '1171' :
                     document.body.style.backgroundImage = 'url("../img/drizzle.jpg")';
                     break;
-                case '1066' :
-                case '1114' :
-                case '1210' :
-                case '1213' :
-                case '1216' :
-                case '1219' :
-                case '1222' :
-                case '1225' :
-                    document.body.style.backgroundImage = 'url("../img/snow.jpg")';
+                case '1087' :
+                case '1273' :
+                case '1276' :
+                case '1279' :
+                case '1282' :
+                    document.body.style.backgroundImage = 'url("../img/thunder.jpg")';
+                    break;
+                case '1117' :
+                    document.body.style.backgroundImage = 'url("../img/blizzard.jpg")';
+                    break;
+                case '1240' :
+                case '1243' :
+                case '1246' :
+                    document.body.style.backgroundImage = 'url("../img/shower.jpg")';
+                    break;
+                case '1249' :
+                case '1252' :
+                case '1261' :
+                case '1264' :
+                    document.body.style.backgroundImage = 'url("../img/sleet_shower.png")';
+                    break;
+                case '1255' :
+                case '1258' :
+                    document.body.style.backgroundImage = 'url("../img/snow_shower.png")';
                     break;
                 }
             }
         }
     }
+}
