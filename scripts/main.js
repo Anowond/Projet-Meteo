@@ -30,8 +30,32 @@ bouton1.addEventListener("click", async () => {
     console.log(resultatRetour)
     ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
-    wet.textContent = `${resultatRetour.current.humidity}%`
+    wet.textContent = `${resultatRetour.current.humidity}%` 
     wind.textContent = `${resultatRetour.current.wind_kph}Km/h`
+   
+    let currentAqi = resultatRetour.current.air_quality["us-epa-index"]
+    console.log(currentAqi)
+    switch (currentAqi) {
+
+        case 1 :
+            aqi.textContent = "Bonne"
+        break;
+        case 2 :
+            aqi.textContent = "Modérée"
+        break;
+        case 3 :
+            aqi.textContent = "Dégradée"
+        break;
+        case 4 :
+            aqi.textContent = "Nocive"
+        break;
+        case 5 :
+            aqi.textContent = "Trés Nocive"
+        break;
+        case 6 :
+            aqi.textContent = "Dangereuse"
+        break;
+    }
     
     let astro = await getAstro(inputOrigine.value)
     console.log(astro)
