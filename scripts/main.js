@@ -1,4 +1,4 @@
-import getResponse from "./api.js"
+import {getResponse, getAstro} from "./api.js"
 
 //recupération des variable par id
 let inputOrigine = document.getElementById("inputOrigine")
@@ -32,6 +32,9 @@ bouton1.addEventListener("click", async () => {
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
     wet.textContent = `${resultatRetour.current.humidity}%`
     wind.textContent = `${resultatRetour.current.wind_kph}Km/h`
+    
+    let astro = await getAstro(inputOrigine.value)
+    console.log(astro)
 })
 
 bouton2.addEventListener("click", async () => {
