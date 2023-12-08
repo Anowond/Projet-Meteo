@@ -1,5 +1,5 @@
 body {
-  background-image: url("/Projet-Meteo/img/cloud.jpg");
+  background-image: url("../img/cloud.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -40,6 +40,7 @@ p {
   padding: 20px;
   border: 1px black solid;
 }
+
 .ville {
   display: flex;
   margin: 20px;
@@ -51,25 +52,30 @@ p {
   display: flex;
   margin: 20px;
 }
+
 #temps_jour {
   display: flex;
   flex-direction: column;
   text-align: center;
   font-size: 20px;
 }
+
 #weatherIconBig {
   width: 5em;
   height: auto;
 }
+
 #info_jour {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
+
 #temperature {
   font-size: 20px;
   margin: 30px 0px;
 }
+
 #mini_info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -85,13 +91,4 @@ p {
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   justify-content: center;
-}
-
-  display: flex;
-  margin: 40px;
-  padding: 80px;
-  font-size: 20px;
-  text-align: center;
-  justify-content: center;
-  border: 1px black solid;
 }

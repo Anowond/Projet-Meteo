@@ -1,5 +1,13 @@
 import getResponse from "./api.js"
 
-let reponse = await getResponse("Alençon")
+let inputSearch = document.getElementById("search-bar")
+let button = document.getElementById("button")
 
-console.log(reponse)
+button.addEventListener("click", async () => {
+    let reponse = await getResponse(inputSearch.value)
+    console.log(reponse)
+})
+
+
+
+
