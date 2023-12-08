@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
-      integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script type="module" src="./scripts/api.js" defer></script>
-    <script type="module" src="./scripts/main.js" defer></script>
-    <script type="module" src="./scripts/popup.js" defer></script>
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <title>API Météo</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+    integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="./scripts/api.js" defer></script>
+  <script type="module" src="./scripts/main.js" defer></script>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <title>API Météo</title>
+</head>
 
   <body>
     <div class="header">
@@ -24,9 +20,10 @@
     </div>
     <div class="popup_container">
       <input type="text" placeholder="Cliquez pour agrandir" id="inputOrigine" />
+      <button id="button">Rechercher</button>
       <div class="popup" id="popupInput" style="display: none">
-        <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville"/>
-        <button id="boutonGO" onclick="searchAPI()">GO</button>
+        <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville" />
+        <button id="boutonGO">Rechercher</button>
       </div>
     </div>
     <div class="now">
