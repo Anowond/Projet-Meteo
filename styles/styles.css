@@ -90,7 +90,7 @@ p {
   position:relative
 }
 
-.popup {
+#popupInput {
   display: none;
   position: absolute;
   top: 100%;
@@ -106,7 +106,7 @@ p {
   box-sizing: border-box;
   margin-bottom: 10px;
 }
-.boutonGo{
+#boutonGo{
   padding: 10px;
   border: 2px solid black;
   border-radius: 50%;

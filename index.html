@@ -12,6 +12,7 @@
     ></script>
     <script type="module" src="./scripts/api.js" defer></script>
     <script type="module" src="./scripts/main.js" defer></script>
+    <script type="module" src="./scripts/popup.js" defer></script>
     <link rel="stylesheet" href="./styles/styles.css" />
     <title>API Météo</title>
   </head>
@@ -23,7 +24,7 @@
     </div>
     <div class="popup_container">
       <input type="text" placeholder="Cliquez pour agrandir" id="inputOrigine" />
-      <div class="popup" id="popupInput">
+      <div class="popup" id="popupInput" style="display: none">
         <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville"/>
         <button id="boutonGO" onclick="searchAPI()">GO</button>
       </div>
