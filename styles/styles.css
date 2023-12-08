@@ -19,7 +19,31 @@ p {
 #star-menu {
   width: 30px;
   height: 30px;
+}
 
+.popup_container{
+  position:relative
+}
+#popupInput {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.popup input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+#boutonGo{
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 50%;
 }
 
 .bar {
@@ -35,7 +59,7 @@ p {
   justify-content: center;
 }
 
-.today {
+.now {
   margin: 20px;
   padding: 20px;
   border: 1px black solid;
@@ -86,28 +110,32 @@ p {
   grid-row-gap: 5px;
   justify-content: center;
 }
-.popup_container{
-  position:relative
+
+#today {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 2px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px black solid;
+}
+#demain {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 2px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px black solid;
+}
+.flex_little {
+  margin: 5px;
+  justify-content: center;
+  text-align: center;
+}
+#weatherIconLittle {
+  width: 2em;
+  height: auto;
 }
 
-#popupInput {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.popup input {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-#boutonGo{
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 50%;
-}

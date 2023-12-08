@@ -29,7 +29,7 @@
         <button id="boutonGO" onclick="searchAPI()">GO</button>
       </div>
     </div>
-    <div class="today">
+    <div class="now">
       <div class="ville">
         <p id="ville_localisation">Paris, France</p>
         <p id="favourite_toggle">
@@ -44,7 +44,7 @@
           <p id="weather_today">Nuageux</p>
         </div>
         <div id="info_jour">
-          <p id="temperature">15° Celsius</p>
+          <p id="temperature">5° Celsius</p>
           <section id="mini_info">
             <p id="wet_today">40%</p>
             <p id="wind_today">10km/h</p>
@@ -60,7 +60,70 @@
         <p id="soleil_couche">19h47</p>
       </div>
     </div>
-    <div>
+    <h2>Aujourd'hui</h2>
+    <div id="today">
+      <section class="flex_little" id="morning">
+        <p id="icon_morning">
+          <img src="./img/weather/64x64/day/116.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_morning">Nuageux</p>
+        <p id="temperature_short">5°</p>
+      </section>
+      <section class="flex_little" id="afternoon">
+        <p id="icon_afternoon">
+          <img src="./img/weather/64x64/day/263.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_afternoon">Pluie</p>
+        <p id="temperature_short">11°</p>
+      </section>
+      <section class="flex_little" id="everning">
+        <p id="icon_everning">
+          <img src="./img/weather/64x64/day/263.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_everning">Pluie</p>
+        <p id="temperature_short">7°</p>
+      </section>
+      <section class="flex_little" id="night">
+        <p id="icon_night">
+          <img src="./img/weather/64x64/night/113.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_night">Claire</p>
+        <p id="temperature_short">4°</p>
+      </section>
+    </div>
+    <h2>Demain</h2>
+    <div id="demain">
+      <section class="flex_little" id="morning_demain">
+        <p id="icon_morning_demain">
+          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_morning_demain">Claire</p>
+        <p id="temperature_short_demain">8°</p>
+      </section>
+      <section class="flex_little" id="afternoon_demain">
+        <p id="icon_afternoon_demain">
+          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_afternoon_demain">Claire</p>
+        <p id="temperature_short_demain">12°</p>
+      </section>
+      <section class="flex_little" id="everning_demain">
+        <p id="icon_everning_demain">
+          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_everning_demain">Claire</p>
+        <p id="temperature_short_demain">10°</p>
+      </section>
+      <section class="flex_little" id="night_demain">
+        <p id="icon_night_demain">
+          <img src="./img/weather/64x64/night/113.png" id="weatherIconLittle" />
+        </p>
+        <p id="weather_night_demain">Claire</p>
+        <p id="temperature_short_demain">6°</p>
+      </section>
+    </div>
+
+    <div id="carte">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam,
       facilis sapiente ab eum sed ex similique, quod earum architecto, eius
       mollitia esse aspernatur magnam quos! Excepturi accusamus aperiam atque
