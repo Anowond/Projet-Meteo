@@ -1,5 +1,5 @@
 body {
-  background-image: url("/Projet-Meteo/img/cloud.jpg");
+  background-image: url("../img/cloud.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -86,12 +86,28 @@ p {
   grid-row-gap: 5px;
   justify-content: center;
 }
+.popup_container{
+  position:relative
+}
 
-  display: flex;
-  margin: 40px;
-  padding: 80px;
-  font-size: 20px;
-  text-align: center;
-  justify-content: center;
-  border: 1px black solid;
+#popupInput {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.popup input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+#boutonGo{
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 50%;
 }
