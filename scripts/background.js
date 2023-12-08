@@ -1,4 +1,4 @@
-import getResponse from "./api.js"
+import {getResponse} from "./api.js"
 
 let tableauAPI = await getResponse("Alençon")
 //let weatherToday = document.getElementById("weather_today").textContent;
