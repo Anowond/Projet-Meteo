@@ -1,4 +1,4 @@
-import getResponse from "./api.js"
+import { getResponse } from "./api.js"
 
 let reponse = await getResponse("Alençon")
 

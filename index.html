@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,8 +18,12 @@
       <p>Menu</p>
       <p><img src="./img/star_filled.png" id="star-menu" /></p>
     </div>
-    <div class="bar">
-      <input type="text" placeholder="Saisissez la Location" id="search-bar" />
+    <div class="popup_container">
+      <input type="text" placeholder="Cliquez pour agrandir" id="inputOrigine" />
+      <div class="popup" id="popupInput">
+        <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville"/>
+        <button id="boutonGO" onclick="searchAPI()">GO</button>
+      </div>
     </div>
     <div class="today">météo ici</div>
     <div>
