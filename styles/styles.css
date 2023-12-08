@@ -86,12 +86,3 @@ p {
   grid-row-gap: 5px;
   justify-content: center;
 }
-
-  display: flex;
-  margin: 40px;
-  padding: 80px;
-  font-size: 20px;
-  text-align: center;
-  justify-content: center;
-  border: 1px black solid;
-}
