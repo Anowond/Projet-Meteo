@@ -1,14 +1,16 @@
 import getResponse from "./api.js"
 
 let tableauAPI = await getResponse("Alençon")
+//let weatherToday = document.getElementById("weather_today").textContent;
 
-function backgroundUpdate(weatherToday){
+function backgroundUpdate(){
 for(let object in tableauAPI){
     for (let info in object.current){
         for (let weather in info.condition){
             switch(weather.code){
+            //switch(weatherToday){
                 case '1000' :
-                document.body.style.backgroundImage = 'url("../img/sunny.jpg")';
+                document.body.style.backgroundImage = "url('../img/sunny.jpg')";
                 break;
                 case '1003' :
                 case '1006' :
@@ -84,3 +86,4 @@ for(let object in tableauAPI){
         }
     }
 }
+//backgroundUpdate()
