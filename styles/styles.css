@@ -1,5 +1,5 @@
 body {
-  background-image: url("../img/cloud.jpg");
+  background-image: url("../img/thunder.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -14,12 +14,45 @@ p {
   margin: 30px;
   text-align: center;
   justify-content: space-between;
+  background-color: rgba(166, 255, 82, 0.8);
+}
+
+h2 {
+  background-color: rgba(34, 253, 147, 0.6);
+  width: 40%;
 }
 
 #star-menu {
   width: 30px;
   height: 30px;
+}
 
+.popup_container {
+  position: relative
+}
+
+#popupInput {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.popup input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#boutonGo {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 50%;
 }
 
 .bar {
@@ -35,10 +68,11 @@ p {
   justify-content: center;
 }
 
-.today {
+.now {
   margin: 20px;
   padding: 20px;
   border: 1px black solid;
+  background-color: rgba(79, 196, 255, 0.6);
 }
 
 .ville {
@@ -93,29 +127,35 @@ p {
   justify-content: center;
 }
 
-.popup_container{
-  position:relative
+#today {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 2px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px black solid;
+  background-color: rgba(79, 208, 255, 0.7);
 }
 
-#popupInput {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
+#demain {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 2px;
+  margin: 10px;
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.popup input {
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-#boutonGo{
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 50%;
+  border: 1px black solid;
+  background-color: rgba(79, 149, 255, 0.8);
 }
 
+.flex_little {
+  margin: 5px;
+  justify-content: center;
+  text-align: center;
+}
+
+#weatherIconLittle {
+  width: 2em;
+  height: auto;
+}
