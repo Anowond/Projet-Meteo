@@ -167,7 +167,7 @@ h2 {
 
 #soleil_info {
   display: grid;
-  grid-template-columns: 9em 3em;
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
