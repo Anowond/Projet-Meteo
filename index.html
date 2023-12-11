@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
-    integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="module" src="./scripts/api.js" defer></script>
-  <script type="module" src="./scripts/main.js" defer></script>
-  <script type="module" src="./scripts/background.js" defer></script>
-  <link rel="stylesheet" href="./styles/styles.css" />
-  <title>API Météo</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"
+      integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="./scripts/api.js" defer></script>
+    <script type="module" src="./scripts/main.js" defer></script>
+    <script type="module" src="./scripts/popup.js" defer></script>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>API Météo</title>
+  </head>
 
   <body>
     <div class="header">
@@ -20,16 +23,39 @@
       <p><img src="./img/star_filled.png" id="star-menu" /></p>
     </div>
     <div class="popup_container">
-      <input type="text" placeholder="Cliquez pour agrandir" id="inputOrigine" />
-      <button id="button">Rechercher</button>
-      <div class="popup" id="popupInput" style="display: none">
-        <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville" />
-        <button id="boutonGO">Rechercher</button>
+      <button id="afficherPopup" class="afficherPopup">Pour rechercher une ville, cliquez ici</button>
+      <div id="overlay" class="overlay">     
+        <button id="fermerPopup" class="fermerPopup ">Fermer</button>       
+        <div id="popup" class="popup bordureSearch">
+          
+            <div class="recherche">
+              
+              <input type="search"  id="inputAgrandi" class=" paddingSearch bordureNone recherche" placeholder="Saisissez votre ville"/>
+            </div>
+            <button class="buttonSearch bordureNone" id="boutonGO">Recherche</button>
+          
+        </div>        
       </div>
+
+
+
+
+
+
+
+
+
+      <!--
+      <input type="text" placeholder="Rechercher la localisation" id="inputOrigine" />
+      <div class="popup" id="popupInput" style="display: none">
+        <input type="text" id="inputAgrandi" placeholder="Saisissez votre ville"/>
+        <button id="boutonGO">Rercherche</button>
+      </div>
+      -->
     </div>
-    <div class="now">
+    <div class="today">
       <div class="ville">
-        <p id="ville_localisation"></p>
+        <p id="ville_localisation">Paris, France</p>
         <p id="favourite_toggle">
           <img src="./img/star_empty.png" id="star-menu" />
         </p>
@@ -39,14 +65,14 @@
           <p id="icon_today">
             <img src="./img/weather/64x64/day/116.png" id="weatherIconBig" />
           </p>
-          <p id="weather_today"></p>
+          <p id="weather_today">Nuageux</p>
         </div>
         <div id="info_jour">
-          <p id="temperature"></p>
+          <p id="temperature">15° Celsius</p>
           <section id="mini_info">
-            <p id="wet_today"></p>
-            <p id="wind_today"></p>
-            <p id="aqi_today"></p>
+            <p id="wet_today">40%</p>
+            <p id="wind_today">10km/h</p>
+            <p id="aqi_today">Good</p>
             <p id="uv_today">UV 2</p>
           </section>
         </div>
@@ -58,70 +84,7 @@
         <p id="soleil_couche">19h47</p>
       </div>
     </div>
-    <h2>Aujourd'hui</h2>
-    <div id="today">
-      <section class="flex_little" id="morning">
-        <p id="icon_morning">
-          <img src="./img/weather/64x64/day/116.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_morning">Nuageux</p>
-        <p id="temperature_short">5°</p>
-      </section>
-      <section class="flex_little" id="afternoon">
-        <p id="icon_afternoon">
-          <img src="./img/weather/64x64/day/263.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_afternoon">Pluie</p>
-        <p id="temperature_short">11°</p>
-      </section>
-      <section class="flex_little" id="everning">
-        <p id="icon_everning">
-          <img src="./img/weather/64x64/day/263.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_everning">Pluie</p>
-        <p id="temperature_short">7°</p>
-      </section>
-      <section class="flex_little" id="night">
-        <p id="icon_night">
-          <img src="./img/weather/64x64/night/113.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_night">Claire</p>
-        <p id="temperature_short">4°</p>
-      </section>
-    </div>
-    <h2>Demain</h2>
-    <div id="demain">
-      <section class="flex_little" id="morning_demain">
-        <p id="icon_morning_demain">
-          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_morning_demain">Claire</p>
-        <p id="temperature_short_demain">8°</p>
-      </section>
-      <section class="flex_little" id="afternoon_demain">
-        <p id="icon_afternoon_demain">
-          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_afternoon_demain">Claire</p>
-        <p id="temperature_short_demain">12°</p>
-      </section>
-      <section class="flex_little" id="everning_demain">
-        <p id="icon_everning_demain">
-          <img src="./img/weather/64x64/day/113.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_everning_demain">Claire</p>
-        <p id="temperature_short_demain">10°</p>
-      </section>
-      <section class="flex_little" id="night_demain">
-        <p id="icon_night_demain">
-          <img src="./img/weather/64x64/night/113.png" id="weatherIconLittle" />
-        </p>
-        <p id="weather_night_demain">Claire</p>
-        <p id="temperature_short_demain">6°</p>
-      </section>
-    </div>
-
-    <div id="carte">
+    <div>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam,
       facilis sapiente ab eum sed ex similique, quod earum architecto, eius
       mollitia esse aspernatur magnam quos! Excepturi accusamus aperiam atque
@@ -129,3 +92,4 @@
     </div>
   </body>
 </html>
+

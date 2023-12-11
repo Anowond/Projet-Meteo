@@ -1,19 +1,15 @@
-import {getResponse, getAstro} from "./api.js"
+import getResponse from "./api.js"
+
+let reponse = await getResponse("Alençon")
+
+
+
 
 //recupération des variable par id
 let inputOrigine = document.getElementById("inputOrigine")
 let popupInput = document.getElementById("popupInput")
 let inputAgrandi = document.getElementById("inputAgrandi")
-let bouton1 = document.getElementById("button")
-let bouton2 = document.getElementById("boutonGO")
-let ville = document.getElementById("ville_localisation")
-let temperature = document.getElementById("temperature")
-let wet = document.getElementById("wet_today")
-let wind = document.getElementById("wind_today")
-let aqi = document.getElementById("aqi_today")
-let uv = document.getElementById("uv_today")
-let sunrise = document.getElementById("soleil_leve")
-let sunset = document.getElementById("soleil_couche")
+let bouton = document.getElementById("boutonGO")
 popupInput.style.display = "none";
 
 //au click de l'input écran
@@ -21,50 +17,31 @@ inputOrigine.addEventListener("click", () => {
     //apparition du popup input agrandi
     popupInput.style.display = "block";
 });
-
-//récupération des données retourné par l'API
-
+let resultatRetour
 //recuperation de la reponse
-bouton1.addEventListener("click", async () => {
-    let resultatRetour = await getResponse(inputOrigine.value);
-    console.log(resultatRetour)
-    ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
-    temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
-    wet.textContent = `${resultatRetour.current.humidity}%` 
-    wind.textContent = `${resultatRetour.current.wind_kph}Km/h`
-   
-    let currentAqi = resultatRetour.current.air_quality["us-epa-index"]
-    console.log(currentAqi)
-    switch (currentAqi) {
-
-        case 1 :
-            aqi.textContent = "Bonne"
-        break;
-        case 2 :
-            aqi.textContent = "Modérée"
-        break;
-        case 3 :
-            aqi.textContent = "Dégradée"
-        break;
-        case 4 :
-            aqi.textContent = "Nocive"
-        break;
-        case 5 :
-            aqi.textContent = "Trés Nocive"
-        break;
-        case 6 :
-            aqi.textContent = "Dangereuse"
-        break;
-    }
-    
-    let astro = await getAstro(inputOrigine.value)
-    console.log(astro)
-})
-
-bouton2.addEventListener("click", async () => {
-    let resultatRetour = await getResponse(inputAgrandi.value);
+bouton.addEventListener("click", async () => {
+    //recuperation de la valeur de l'inputagrandi 
+    let recherche = inputAgrandi.value
+    resultatRetour = await getResponse(recherche);
     console.log(resultatRetour)
 })
+/*
+let villeLocalisation = document.getElementById("ville_localisation")
+let mainJour = document.getElementById("main_jour")
+let tempsJour = document.getElementById("temps_jour")
+let iconToday = document.getElementById("icon_today")
+let weatherIconBig = document.getElementById("weatherIconBig")
+let weatherToday = document.getElementById("weather_today")
+let temperature = document.getElementById("temperature")
+let wetToday = document.getElementById("wet_today")
+let windToday = document.getElementById("wind_today")
+let aqiToday = document.getElementById("aqi_today")
+let uvToday = document.getElementById("uv_today")
+let soleilLeve = document.getElementById("soleil_leve")
+let soleilCouche = document.getElementById("soleil_couche")
 
+villeLocalisation.textContent = resultatRetour.location.name
+console.log(villeLocalisation)
+*/
 
 
