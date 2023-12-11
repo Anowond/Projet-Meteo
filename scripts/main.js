@@ -13,6 +13,13 @@ let aqi = document.getElementById("aqi_today")
 let uv = document.getElementById("uv_today")
 let sunrise = document.getElementById("soleil_leve")
 let sunset = document.getElementById("soleil_couche")
+/*popupInput.style.display = "none";
+
+//au click de l'input écran
+inputOrigine.addEventListener("click", () => {
+    //apparition du popup input agrandi
+    popupInput.style.display = "block";
+});*/
 
 //récupération des données retourné par l'API
 
