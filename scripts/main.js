@@ -2,8 +2,8 @@ import { getResponse, getAstro } from "./api.js"
 
 //recupération des éléments html par id pour l'écran principal
 let weatherIconBig = document.getElementById("weatherIconBig")
-let inputOrigine = document.getElementById("inputOrigine")
-let popupInput = document.getElementById("popupInput")
+//let inputOrigine = document.getElementById("inputOrigine")
+//let popupInput = document.getElementById("popupInput")
 let inputAgrandi = document.getElementById("inputAgrandi")
 //let bouton1 = document.getElementById("button")
 let bouton2 = document.getElementById("boutonGO")
@@ -33,20 +33,20 @@ let weatherIconLittleNight = document.getElementById("weatherIconLittleNight")
 let weather_night = document.getElementById("weather_night")
 let temperatureNight = document.getElementById("temperature_short_night")
 
-popupInput.style.display = "none";
+//popupInput.style.display = "none";
 
 //au click de l'input écran
-inputOrigine.addEventListener("click", () => {
+/*inputOrigine.addEventListener("click", () => {
     //apparition du popup input agrandi
     popupInput.style.display = "block";
-})
+})*/
 
 //récupération des données retourné par l'API
 
 //recuperation de la reponse
-bouton1.addEventListener("click", async () => {
-    let resultatRetour = await getResponse(inputOrigine.value);
-    let astro = await getAstro(inputOrigine.value)
+bouton2.addEventListener("click", async () => {
+    let resultatRetour = await getResponse(inputAgrandi.value);
+    let astro = await getAstro(inputAgrandi.value)
     console.log(resultatRetour, astro)
     weatherIconBig.src = resultatRetour.current.condition.icon
     ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
