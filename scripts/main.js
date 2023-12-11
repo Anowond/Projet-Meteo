@@ -1,5 +1,6 @@
 import {getResponse, getAstro} from "./api.js"
 import {hideOverlay} from "./popup.js"
+import {backgroundUpdate} from "./background.js"
 
 
 //recupération des éléments html par id pour l'écran principal
@@ -111,38 +112,43 @@ bouton2.addEventListener("click", async () => {
     temperatureMorning.textContent = resultatRetour.forecast.forecastday[0].hour[6].temp_c
 
     weatherIconLittleAfternoon.src = resultatRetour.forecast.forecastday[0].hour[11].condition.icon
-    weatherIconLittleAfternoon.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
+    weatherIconLittleAfternoon.alt = resultatRetour.forecast.forecastday[0].hour[11].condition.text
     weather_afternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].condition.text
     temperatureAfternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].temp_c
 
     weatherIconLittleEvening.src = resultatRetour.forecast.forecastday[0].hour[16].condition.icon
-    weatherIconLittleEvening.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
+    weatherIconLittleEvening.alt = resultatRetour.forecast.forecastday[0].hour[16].condition.text
     weather_evening.textContent = resultatRetour.forecast.forecastday[0].hour[16].condition.text
     temperatureEvening.textContent = resultatRetour.forecast.forecastday[0].hour[16].temp_c
 
     weatherIconLittleNight.src = resultatRetour.forecast.forecastday[0].hour[23].condition.icon
-    weatherIconLittleNight.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
+    weatherIconLittleNight.alt = resultatRetour.forecast.forecastday[0].hour[23].condition.text
     weather_night.textContent = resultatRetour.forecast.forecastday[0].hour[23].condition.text
     temperatureNight.textContent = resultatRetour.forecast.forecastday[0].hour[23].temp_c
 
     // Attribution des valeurs tirées de l'API pour les prévisions du lendemain
     weatherIconLittleMorningTomorrow.src = resultatRetour.forecast.forecastday[1].hour[6].condition.icon
+    weatherIconLittleMorningTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[6].condition.text
     weather_morning_demain.textContent = resultatRetour.forecast.forecastday[1].hour[6].condition.text
     temperature_short_demain_morning.textContent = resultatRetour.forecast.forecastday[1].hour[6].temp_c
 
     weatherIconLittleAfternoonTomorrow.src = resultatRetour.forecast.forecastday[1].hour[11].condition.icon
+    weatherIconLittleAfternoonTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[11].condition.text
     weather_afternoon_demain.textContent = resultatRetour.forecast.forecastday[1].hour[11].condition.text
     temperature_short_demain_afternoon.textContent = resultatRetour.forecast.forecastday[1].hour[11].temp_c
 
     weatherIconLittleEveningTomorrow.src = resultatRetour.forecast.forecastday[1].hour[16].condition.icon
+    weatherIconLittleEveningTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[16].condition.text
     weather_everning_demain.textContent = resultatRetour.forecast.forecastday[1].hour[16].condition.text
     temperature_short_demain_evening.textContent = resultatRetour.forecast.forecastday[1].hour[16].temp_c
 
     weatherIconLittleNightTomorrow.src = resultatRetour.forecast.forecastday[1].hour[23].condition.icon
+    weatherIconLittleNightTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[23].condition.text
     weather_night_demain.textContent = resultatRetour.forecast.forecastday[1].hour[23].condition.text
     temperature_short_demain_night.textContent = resultatRetour.forecast.forecastday[1].hour[23].temp_c
 
     hideOverlay();
+    backgroundUpdate(resultatRetour);
 })
 
 /*bouton2.addEventListener("click", async () => {
