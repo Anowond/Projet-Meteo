@@ -1,6 +1,6 @@
-import {getResponse} from "./api.js"
+/*import getResponse from "./api.js"
     //recupération des variable par id
-    /*let inputOrigine = document.getElementById("afficherPopup")    
+    let inputOrigine = document.getElementById("afficherPopup")    
     let popupInput = document.getElementById("popupInput")
     let inputAgrandi = document.getElementById("inputAgrandi")
     let bouton = document.getElementById("boutonGO")
