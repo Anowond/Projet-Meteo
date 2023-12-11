@@ -1,4 +1,5 @@
 import {getResponse, getAstro} from "./api.js"
+import {hideOverlay} from "./popup.js"
 
 //recupération des variable par id
 //let inputOrigine = document.getElementById("inputOrigine")
@@ -26,14 +27,14 @@ inputOrigine.addEventListener("click", () => {
 //recuperation de la reponse
 bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
-    console.log(resultatRetour)
+    console.log(resultatRetour);
     ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
     wet.textContent = `${resultatRetour.current.humidity}%` 
     wind.textContent = `${resultatRetour.current.wind_kph}Km/h`
    
     let currentAqi = resultatRetour.current.air_quality["us-epa-index"]
-    console.log(currentAqi)
+    console.log(currentAqi);
     switch (currentAqi) {
 
         case 1 :
@@ -56,8 +57,9 @@ bouton2.addEventListener("click", async () => {
         break;
     }
     
-    let astro = await getAstro(inputAgrandi.value)
-    console.log(astro)
+    let astro = await getAstro(inputAgrandi.value);
+    console.log(astro);
+    hideOverlay();
 })
 
 /*bouton2.addEventListener("click", async () => {
