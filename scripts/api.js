@@ -4,7 +4,7 @@ const getResponse = async (location) => {
         method: 'GET',
         url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
         params: { q: `${location}`,
-                    days: 3,
+                    days: 2,
                     aqi: "yes",
                     lang: "fr" },
         headers: {
