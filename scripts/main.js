@@ -1,4 +1,6 @@
-import { getResponse, getAstro } from "./api.js"
+import {getResponse, getAstro} from "./api.js"
+import {hideOverlay} from "./popup.js"
+
 
 //recupération des éléments html par id pour l'écran principal
 let weatherIconBig = document.getElementById("weatherIconBig")
@@ -64,7 +66,7 @@ let temperature_short_demain_night = document.getElementById("temperature_short_
 bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
     let astro = await getAstro(inputAgrandi.value)
-    console.log(resultatRetour, astro)
+    console.log(resultatRetour)
     weatherIconBig.src = resultatRetour.current.condition.icon
     ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
@@ -133,6 +135,7 @@ bouton2.addEventListener("click", async () => {
     weather_night_demain.textContent = resultatRetour.forecast.forecastday[1].hour[23].condition.text
     temperature_short_demain_night.textContent = resultatRetour.forecast.forecastday[1].hour[23].temp_c
 
+    hideOverlay();
 })
 
 /*bouton2.addEventListener("click", async () => {

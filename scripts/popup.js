@@ -31,24 +31,26 @@ afficherPopup.addEventListener("click",()=>{
 })
 
 //recuperation de la reponse
-btnGO.addEventListener("click", async ()=>{
+/*btnGO.addEventListener("click", async ()=>{
 
     //recuperation de la valeur de l'inputagrandi 
     let recherche = input.value
     let resultatRetour = await getResponse(recherche);       
-})
+})*/
 
 //fermeture du popup au clic sur bouton fermer
 fermerPopup.addEventListener("click",()=>{
-        overlay.style.display = "none";
+    hideOverlay();
 })
 
-
-
-
+function hideOverlay() {
+    overlay.style.display = "none";
+}
 
 /*document.addEventListener("click", (event)=>{
     if(!overlay.contains(event.target) && event.target !== overlay){
         overlay.style.display = "none";
     }
 })*/
+
+export {hideOverlay}
