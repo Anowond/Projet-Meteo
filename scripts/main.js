@@ -39,7 +39,7 @@ popupInput.style.display = "none";
 inputOrigine.addEventListener("click", () => {
     //apparition du popup input agrandi
     popupInput.style.display = "block";
-});*/
+})
 
 //récupération des données retourné par l'API
 
