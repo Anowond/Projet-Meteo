@@ -56,12 +56,10 @@ function hideOverlay() {
 })*/
 
 let btnPopupFavoris = document.getElementById("btnPopupFavoris")
-let popupFavoris = document.getElementById("popupFavoris")
+let listFavoris = document.getElementById("listFavoris")
 let overlayFavoris = document.getElementById("overlayFavoris")
 let popup_container = document.getElementById("popup_container")
 let fermerFavoris = document.getElementById("fermerFavoris")
-let buttonSupprime =document.getElementById("buttonSupprime")
-let localisation = document.getElementById("localisation")
 
 btnPopupFavoris.addEventListener("click",()=>{
     overlayFavoris.style.display = "block";
@@ -75,17 +73,13 @@ fermerFavoris.addEventListener("click",()=>{
    
 })
 
-buttonSupprime.addEventListener("click",()=>{
-    localisation.textContent.remove()
-})
-
 //Création d'un tableau favorite
 let arrayFavorite = [];
 
 //Loop For pour check si la localisation est déjà en favorite.
-for (let i; arrayFavorite.lenght ; i++) {
+for (let i = 0; i < arrayFavorite.length ; i++) {
     let divFav = document.getElementById(`divFav${i}`);
-    if (divFav != undefined){
+    if (divFav !== null){
         if (divFav.textContent == ville.textContent) {
             starToggle.src = "./img/star_filled.png";
         }
@@ -94,15 +88,11 @@ for (let i; arrayFavorite.lenght ; i++) {
 
 //Event button pour créer une div favorite et changer l'icone star en jaune.
 starToggle.addEventListener("click",()=>{
-    let i = 0;
-    if (starToggle.src == "./img/star_filled.png") {
-        return;
-    }
-    else {
+    if (starToggle.src !== "./img/star_filled.png") {
+        starToggle.src = "./img/star_filled.png"
         arrayFavorite.push(ville.textContent);
-        
         let sectionFav = document.createElement("section");
-        divFav.classList.add("sectionFav");
+        sectionFav.classList.add("ajoutFavoris");
 
         let divFav = document.createElement("div");
         divFav.textContent = ville.textContent;
@@ -110,29 +100,24 @@ starToggle.addEventListener("click",()=>{
         
         let buttonSupprimer = document.createElement("img");
         buttonSupprimer.classList.add("buttonSupprimer");
-        buttonSupprimer.setAttribute("src", "./remove.png");
+        buttonSupprimer.setAttribute("src", "../img/remove.png");
 
+        for (let i = 0; i < arrayFavorite.length; i++) {
+            sectionFav.setAttribute("id",`ajoutFavoris${i}`);
+            divFav.setAttribute("id",`divFav${i}`);
+        }
+            
         buttonSupprimer.addEventListener("click", () => {
-            let removeVille = divFav.textContent;
-            favoriteSuprimme(arrayFavorite, removeVille);
+            arrayFavorite.pop(ville.textContent);
             buttonSupprimer.parentElement.remove();
+            console.log(arrayFavorite)
         })
 
-        popupFavourite.appendChild(sectionFav);
+        listFavoris.appendChild(sectionFav);
         sectionFav.appendChild(divFav);
         sectionFav.appendChild(buttonSupprimer);
-            
-        for (let i; arrayFavorite.lenght; i++) {
-            sectionFav.id = `sectionFav${i}`;
-            divFav.id = `divFav${i}`;
-        }
+        console.log(arrayFavorite)
     }
 })
 
-function favoriteSuprimme(arrayFavorite, removeVille) { 
-    return arrayFavorite.filter(function (dontRemove) { 
-        return dontRemove != removeVille; 
-    });
-}
-
-export {hideOverlay}
+export {hideOverlay, arrayFavorite}

@@ -1,5 +1,5 @@
 import {getResponse, getAstro} from "./api.js"
-import {hideOverlay} from "./popup.js"
+import {hideOverlay, arrayFavorite} from "./popup.js"
 import {backgroundUpdate} from "./background.js"
 
 
@@ -71,7 +71,7 @@ bouton2.addEventListener("click", async () => {
     console.log(resultatRetour)
     weatherIconBig.src = resultatRetour.current.condition.icon
     weatherIconBig.alt = resultatRetour.current.condition.text
-    ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
+    ville.textContent = `${resultatRetour.location.name}, ${resultatRetour.location.country}`
     weather_today.textContent = resultatRetour.current.condition.text
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
     wet.textContent = `Humidité: ${resultatRetour.current.humidity}%`
@@ -155,7 +155,103 @@ bouton2.addEventListener("click", async () => {
 
     hideOverlay();
     backgroundUpdate(resultatRetour);
-})
+});
+
+
+for (let i = 0; i < arrayFavorite.length; i++) {
+    let boutonFav = document.getElementById(`divFav${i}`);
+    boutonFav.addEventListener("click", async () => {
+        let resultatRetour = await getResponse(boutonFav.value);
+        let astro = await getAstro(boutonFav.value)
+        console.log(resultatRetour)
+        weatherIconBig.src = resultatRetour.current.condition.icon
+        weatherIconBig.alt = resultatRetour.current.condition.text
+        ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
+        weather_today.textContent = resultatRetour.current.condition.text
+        temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
+        wet.textContent = `Humidité: ${resultatRetour.current.humidity}%`
+        wind.textContent = `Vent: ${resultatRetour.current.wind_kph}Km/h`
+
+        let currentAqi = resultatRetour.current.air_quality["us-epa-index"]
+        //console.log(currentAqi)
+        switch (currentAqi) {
+
+            case 1:
+                aqi.textContent = "AQI: Bonne"
+                aqi.classList.add("aqi1")
+                break;
+            case 2:
+                aqi.textContent = "AQI: Modérée"
+                aqi.classList.add("aqi2")
+                break;
+            case 3:
+                aqi.textContent = "AQI: Dégradée"
+                aqi.classList.add("aqi3")
+                break;
+            case 4:
+                aqi.textContent = "AQI: Nocive"
+                aqi.classList.add("aqi4")
+                break;
+            case 5:
+                aqi.textContent = "AQI: Trés Nocive"
+                aqi.classList.add("aqi5")
+                break;
+            case 6:
+                aqi.textContent = "AQI: Dangereuse"
+                aqi.classList.add("aqi6")
+                break;
+        }
+
+        uv.textContent = `UV: ${resultatRetour.current.uv}`
+        sunrise.textContent = `${astro.astronomy.astro.sunrise}`
+        sunset.textContent = `${astro.astronomy.astro.sunset}`
+
+        // Attribution des valeurs tirées de l'API pour les prévisions du jour
+        weatherIconLittleMorning.src = resultatRetour.forecast.forecastday[0].hour[6].condition.icon
+        weatherIconLittleMorning.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
+        weather_morning.textContent = resultatRetour.forecast.forecastday[0].hour[6].condition.text
+        temperatureMorning.textContent = resultatRetour.forecast.forecastday[0].hour[6].temp_c
+
+        weatherIconLittleAfternoon.src = resultatRetour.forecast.forecastday[0].hour[11].condition.icon
+        weatherIconLittleAfternoon.alt = resultatRetour.forecast.forecastday[0].hour[11].condition.text
+        weather_afternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].condition.text
+        temperatureAfternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].temp_c
+
+        weatherIconLittleEvening.src = resultatRetour.forecast.forecastday[0].hour[16].condition.icon
+        weatherIconLittleEvening.alt = resultatRetour.forecast.forecastday[0].hour[16].condition.text
+        weather_evening.textContent = resultatRetour.forecast.forecastday[0].hour[16].condition.text
+        temperatureEvening.textContent = resultatRetour.forecast.forecastday[0].hour[16].temp_c
+
+        weatherIconLittleNight.src = resultatRetour.forecast.forecastday[0].hour[23].condition.icon
+        weatherIconLittleNight.alt = resultatRetour.forecast.forecastday[0].hour[23].condition.text
+        weather_night.textContent = resultatRetour.forecast.forecastday[0].hour[23].condition.text
+        temperatureNight.textContent = resultatRetour.forecast.forecastday[0].hour[23].temp_c
+
+    // Attribution des valeurs tirées de l'API pour les prévisions du lendemain
+        weatherIconLittleMorningTomorrow.src = resultatRetour.forecast.forecastday[1].hour[6].condition.icon
+        weatherIconLittleMorningTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[6].condition.text
+        weather_morning_demain.textContent = resultatRetour.forecast.forecastday[1].hour[6].condition.text
+        temperature_short_demain_morning.textContent = resultatRetour.forecast.forecastday[1].hour[6].temp_c
+
+        weatherIconLittleAfternoonTomorrow.src = resultatRetour.forecast.forecastday[1].hour[11].condition.icon
+        weatherIconLittleAfternoonTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[11].condition.text
+        weather_afternoon_demain.textContent = resultatRetour.forecast.forecastday[1].hour[11].condition.text
+        temperature_short_demain_afternoon.textContent = resultatRetour.forecast.forecastday[1].hour[11].temp_c
+
+        weatherIconLittleEveningTomorrow.src = resultatRetour.forecast.forecastday[1].hour[16].condition.icon
+        weatherIconLittleEveningTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[16].condition.text
+        weather_everning_demain.textContent = resultatRetour.forecast.forecastday[1].hour[16].condition.text
+        temperature_short_demain_evening.textContent = resultatRetour.forecast.forecastday[1].hour[16].temp_c
+
+        weatherIconLittleNightTomorrow.src = resultatRetour.forecast.forecastday[1].hour[23].condition.icon
+        weatherIconLittleNightTomorrow.alt = resultatRetour.forecast.forecastday[1].hour[23].condition.text
+        weather_night_demain.textContent = resultatRetour.forecast.forecastday[1].hour[23].condition.text
+        temperature_short_demain_night.textContent = resultatRetour.forecast.forecastday[1].hour[23].temp_c
+
+        hideOverlay();
+        backgroundUpdate(resultatRetour);
+    });
+}
 
 /*bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
