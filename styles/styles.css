@@ -1,7 +1,31 @@
+@font-face {
+  font-family: Montserrat;
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: Manrope;
+  src: url("../fonts/Manrope/Manrope-VariableFont_wght.ttf");
+}
+
+* {
+  font-family: Manrope;
+}
+
 body {
   background-image: url("../img/thunder.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: Montserrat;
+}
+
+h1 {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: rgba(0, 194, 255, 0.75);
+  font-size: 1.2em;
+  margin: 30px;
 }
 
 p {
@@ -20,6 +44,12 @@ p {
 h2 {
   background-color: rgba(34, 253, 147, 0.6);
   width: 40%;
+}
+
+h3 {
+  margin: 30px;
+  background-color: rgba(34, 253, 147, 0.6);
+  padding: 5px
 }
 
 #star-menu {

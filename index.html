@@ -12,6 +12,7 @@
   <script type="module" src="./scripts/background.js" defer></script>
   <script type="module" src="./scripts/main.js" defer></script>
   <script type="module" src="./scripts/popup.js" defer></script>
+  <script type="module" src="./scripts/position.js" defer></script>
   <link rel="stylesheet" href="./styles/styles.css" />
   <title>API Météo</title>
 </head>
@@ -21,6 +22,8 @@
     <p>Menu</p>
     <p><img src="./img/star_filled.png" id="star-menu" /></p>
   </div>
+  <h1 id="title">Bonjour et bienvenue sur Weather App ! La météo au creux de votre main !</h1>
+  <h3 id="currentPosition"></h3>
   <div class="popup_container">
     <button id="afficherPopup" class="afficherPopup">Pour rechercher une ville, cliquez ici</button>
     <div id="overlay" class="overlay">
