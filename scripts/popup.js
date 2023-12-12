@@ -13,6 +13,8 @@
     });
     
 */
+let ville = document.getElementById("ville_localisation");
+let starToggle = document.getElementById("star_toggle")
 let afficherPopup = document.getElementById("afficherPopup")
 let overlay = document.getElementById("overlay")
 let fermerPopup = document.getElementById("fermerPopup")
@@ -54,12 +56,10 @@ function hideOverlay() {
 })*/
 
 let btnPopupFavoris = document.getElementById("btnPopupFavoris")
-let popupFavoris = document.getElementById("popupFavoris")
+let listFavoris = document.getElementById("listFavoris")
 let overlayFavoris = document.getElementById("overlayFavoris")
 let popup_container = document.getElementById("popup_container")
 let fermerFavoris = document.getElementById("fermerFavoris")
-let buttonSupprime =document.getElementById("buttonSupprime")
-let localisation = document.getElementById("localisation")
 
 btnPopupFavoris.addEventListener("click",()=>{
     overlayFavoris.style.display = "block";
@@ -73,10 +73,51 @@ fermerFavoris.addEventListener("click",()=>{
    
 })
 
-buttonSupprime.addEventListener("click",()=>{
-    localisation.textContent.remove()
+//Création d'un tableau favorite
+let arrayFavorite = [];
+
+//Loop For pour check si la localisation est déjà en favorite.
+for (let i = 0; i < arrayFavorite.length ; i++) {
+    let divFav = document.getElementById(`divFav${i}`);
+    if (divFav !== null){
+        if (divFav.textContent == ville.textContent) {
+            starToggle.src = "./img/star_filled.png";
+        }
+    }
+}
+
+//Event button pour créer une div favorite et changer l'icone star en jaune.
+starToggle.addEventListener("click",()=>{
+    if (starToggle.src !== "./img/star_filled.png") {
+        starToggle.src = "./img/star_filled.png"
+        arrayFavorite.push(ville.textContent);
+        let sectionFav = document.createElement("section");
+        sectionFav.classList.add("ajoutFavoris");
+
+        let divFav = document.createElement("div");
+        divFav.textContent = ville.textContent;
+        divFav.classList.add("divFav");
+        
+        let buttonSupprimer = document.createElement("img");
+        buttonSupprimer.classList.add("buttonSupprimer");
+        buttonSupprimer.setAttribute("src", "../img/remove.png");
+
+        for (let i = 0; i < arrayFavorite.length; i++) {
+            sectionFav.setAttribute("id",`ajoutFavoris${i}`);
+            divFav.setAttribute("id",`divFav${i}`);
+        }
+            
+        buttonSupprimer.addEventListener("click", () => {
+            arrayFavorite.pop(ville.textContent);
+            buttonSupprimer.parentElement.remove();
+            console.log(arrayFavorite)
+        })
+
+        listFavoris.appendChild(sectionFav);
+        sectionFav.appendChild(divFav);
+        sectionFav.appendChild(buttonSupprimer);
+        console.log(arrayFavorite)
+    }
 })
 
-
-
-export {hideOverlay}
+export {hideOverlay, arrayFavorite}
