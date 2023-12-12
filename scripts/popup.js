@@ -55,6 +55,30 @@ function hideOverlay() {
     }
 })*/
 
+let btnPopupFavoris = document.getElementById("btnPopupFavoris")
+let popupFavoris = document.getElementById("popupFavoris")
+let overlayFavoris = document.getElementById("overlayFavoris")
+let popup_container = document.getElementById("popup_container")
+let fermerFavoris = document.getElementById("fermerFavoris")
+let buttonSupprime =document.getElementById("buttonSupprime")
+let localisation = document.getElementById("localisation")
+
+btnPopupFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "block";
+    popup_container.style.visibility = "hidden";
+
+})
+
+fermerFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "none"
+    popup_container.style.visibility = "visible"
+   
+})
+
+buttonSupprime.addEventListener("click",()=>{
+    localisation.textContent.remove()
+})
+
 //Création d'un tableau favorite
 let arrayFavorite = [];
 

@@ -83,21 +83,27 @@ bouton2.addEventListener("click", async () => {
 
         case 1:
             aqi.textContent = "AQI: Bonne"
+            aqi.classList.add("aqi1")
             break;
         case 2:
             aqi.textContent = "AQI: Modérée"
+            aqi.classList.add("aqi2")
             break;
         case 3:
             aqi.textContent = "AQI: Dégradée"
+            aqi.classList.add("aqi3")
             break;
         case 4:
             aqi.textContent = "AQI: Nocive"
+            aqi.classList.add("aqi4")
             break;
         case 5:
             aqi.textContent = "AQI: Trés Nocive"
+            aqi.classList.add("aqi5")
             break;
         case 6:
             aqi.textContent = "AQI: Dangereuse"
+            aqi.classList.add("aqi6")
             break;
     }
 
