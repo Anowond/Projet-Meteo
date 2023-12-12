@@ -64,7 +64,7 @@ let temperature_short_demain_night = document.getElementById("temperature_short_
 
 //récupération des données retourné par l'API
 
-//recuperation de la reponse
+//recuperation de la reponse à partir de la Recherche
 bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
     let astro = await getAstro(inputAgrandi.value)
@@ -157,12 +157,12 @@ bouton2.addEventListener("click", async () => {
     backgroundUpdate(resultatRetour);
 });
 
-
+//recuperation de la reponse à partir des Favorites
 for (let i = 0; i < arrayFavorite.length; i++) {
     let boutonFav = document.getElementById(`divFav${i}`);
     boutonFav.addEventListener("click", async () => {
-        let resultatRetour = await getResponse(boutonFav.value);
-        let astro = await getAstro(boutonFav.value)
+        let resultatRetour = await getResponse(boutonFav.textContent);
+        let astro = await getAstro(boutonFav.textContent)
         console.log(resultatRetour)
         weatherIconBig.src = resultatRetour.current.condition.icon
         weatherIconBig.alt = resultatRetour.current.condition.text
