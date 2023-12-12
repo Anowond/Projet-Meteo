@@ -13,6 +13,8 @@
     });
     
 */
+let ville = document.getElementById("ville_localisation");
+let starToggle = document.getElementById("star_toggle")
 let afficherPopup = document.getElementById("afficherPopup")
 let overlay = document.getElementById("overlay")
 let fermerPopup = document.getElementById("fermerPopup")
@@ -52,5 +54,61 @@ function hideOverlay() {
         overlay.style.display = "none";
     }
 })*/
+
+//Création d'un tableau favorite
+let arrayFavorite = [];
+
+//Loop For pour check si la localisation est déjà en favorite.
+for (let i; arrayFavorite.lenght ; i++) {
+    let divFav = document.getElementById(`divFav${i}`);
+    if (divFav != undefined){
+        if (divFav.textContent == ville.textContent) {
+            starToggle.src = "./img/star_filled.png";
+        }
+    }
+}
+
+//Event button pour créer une div favorite et changer l'icone star en jaune.
+starToggle.addEventListener("click",()=>{
+    let i = 0;
+    if (starToggle.src == "./img/star_filled.png") {
+        return;
+    }
+    else {
+        arrayFavorite.push(ville.textContent);
+        
+        let sectionFav = document.createElement("section");
+        divFav.classList.add("sectionFav");
+
+        let divFav = document.createElement("div");
+        divFav.textContent = ville.textContent;
+        divFav.classList.add("divFav");
+        
+        let buttonSupprimer = document.createElement("img");
+        buttonSupprimer.classList.add("buttonSupprimer");
+        buttonSupprimer.setAttribute("src", "./remove.png");
+
+        buttonSupprimer.addEventListener("click", () => {
+            let removeVille = divFav.textContent;
+            favoriteSuprimme(arrayFavorite, removeVille);
+            buttonSupprimer.parentElement.remove();
+        })
+
+        popupFavourite.appendChild(sectionFav);
+        sectionFav.appendChild(divFav);
+        sectionFav.appendChild(buttonSupprimer);
+            
+        for (let i; arrayFavorite.lenght; i++) {
+            sectionFav.id = `sectionFav${i}`;
+            divFav.id = `divFav${i}`;
+        }
+    }
+})
+
+function favoriteSuprimme(arrayFavorite, removeVille) { 
+    return arrayFavorite.filter(function (dontRemove) { 
+        return dontRemove != removeVille; 
+    });
+}
 
 export {hideOverlay}

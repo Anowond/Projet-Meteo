@@ -155,6 +155,3 @@ bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
     console.log(resultatRetour)
 })*/
-
-
-
