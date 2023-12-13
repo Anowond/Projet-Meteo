@@ -12,7 +12,14 @@
   <script type="module" src="./scripts/background.js" defer></script>
   <script type="module" src="./scripts/main.js" defer></script>
   <script type="module" src="./scripts/popup.js" defer></script>
+  <script type="module" src="./scripts/position.js" defer></script>
   <link rel="stylesheet" href="./styles/styles.css" />
+  <!--Lien css pour Leaflet (la carte)-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!--Lien JS pour Leaflet (la carte)-->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <title>API Météo</title>
 </head>
 
@@ -23,12 +30,12 @@
   </div>
   <div class="overlayFavoris" id="overlayFavoris">
     <div class="popupFavoris" id="popupFavoris">
-      <div id="listFavoris">        
+      <div id="listFavoris">
         <button id="fermerFavoris" class="fermerFavoris fermerPopup">Fermer</button>
       </div>
     </div>
   </div>
-  
+  <h3 id="currentPosition"></h3>
   <div id="popup_container">
     <button id="afficherPopup" class="afficherPopup">Pour rechercher une ville, cliquez ici</button>
     <div id="overlay" class="overlay">
@@ -142,12 +149,7 @@
     </section>
   </div>
 
-  <div id="carte">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam,
-    facilis sapiente ab eum sed ex similique, quod earum architecto, eius
-    mollitia esse aspernatur magnam quos! Excepturi accusamus aperiam atque
-    libero.
-  </div>
+  <div id="map" class="map"></div>
 </body>
 
 </html>
