@@ -5,7 +5,7 @@ let overlay = document.getElementById("overlay")
 let fermerPopup = document.getElementById("fermerPopup")
 let input = document.getElementById("inputAgrandi")
 let btnGO = document.getElementById("boutonGO")
-let btnFavoris = document.getElementById("btnPopupFavoris")
+
 
 
 //ouverture du popup au click sur "pour rechercher une ville,cliqué ici"
@@ -31,28 +31,13 @@ function hideOverlay() {
 //Gestion des favoris
 
 function favoris() {
-    let btnPopupFavoris = document.getElementById("btnPopupFavoris")
-    let listFavoris = document.getElementById("listFavoris")
-    let overlayFavoris = document.getElementById("overlayFavoris")
-    let popup_container = document.getElementById("popup_container")
-    let fermerFavoris = document.getElementById("fermerFavoris")
 
-    btnPopupFavoris.addEventListener("click",()=>{
-        overlayFavoris.style.display = "block";
-        popup_container.style.visibility = "hidden";
-    
-    })
-    
-    fermerFavoris.addEventListener("click",()=>{
-        overlayFavoris.style.display = "none"
-        popup_container.style.visibility = "visible"   
-    })
 
     let divFavoris = document.createElement("div")
     divFavoris.classList.add("popupFavoris")
 
     btnFavoris.addEventListener("click", () => {
-        overlayFavoris.appendChild(divFavoris)
+        document.body.appendChild(divFavoris)
     })
 
     //Tableau de stockage des favoris
