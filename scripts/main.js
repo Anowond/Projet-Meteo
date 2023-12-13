@@ -275,11 +275,26 @@ async function usePos() {
 
 //Gestion des favoris
 
+let btnPopupFavoris = document.getElementById("btnPopupFavoris")
+let overlayFavoris = document.getElementById("overlayFavoris")
+let popup_container = document.getElementById("popup_container")
+let fermerFavoris = document.getElementById("fermerFavoris")
+
+btnPopupFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "block";
+    popup_container.style.visibility = "hidden";
+})
+    
+fermerFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "none"
+    popup_container.style.visibility = "visible"   
+})
+
 let divFavoris = document.createElement("div")
 divFavoris.classList.add("popupFavoris")
 
 btnFavoris.addEventListener("click", () => {
-    document.body.appendChild(divFavoris)
+    overlayFavoris.appendChild(divFavoris)
 })
 
 //Tableau de stockage des favoris
