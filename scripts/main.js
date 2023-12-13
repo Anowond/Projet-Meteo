@@ -57,7 +57,7 @@ let temperature_short_demain_night = document.getElementById("temperature_short_
 //Fonction d'attribution des données API
 async function attributionDonnesAPI(value) {
 
-    let resultatRetour = await getResponse(value, mapLat, mapLon);
+    let resultatRetour = await getResponse(value);
     let astro = await getAstro(value)
     console.log(resultatRetour)
     weatherIconBig.src = resultatRetour.current.condition.icon
