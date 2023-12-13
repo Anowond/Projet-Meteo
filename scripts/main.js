@@ -1,7 +1,7 @@
 import { getResponse, getAstro } from "./api.js"
 import getPosition from "./localisation.js"
-import { hideOverlay , arrayFavorite} from "./popup.js"
-import {backgroundUpdate} from "./background.js"
+import { hideOverlay, arrayFavorite } from "./popup.js"
+import { backgroundUpdate } from "./background.js"
 
 //recupération des éléments html par id pour l'écran principal
 let weatherIconBig = document.getElementById("weatherIconBig")
@@ -160,9 +160,8 @@ async function usePos() {
 
 }
 
-//   Appelez la fonction usepos
+//Appel de la fonction usepos
 usePos();
-
 
 //recuperation de la reponse
 bouton2.addEventListener("click", async () => {
@@ -278,11 +277,6 @@ bouton2.addEventListener("click", async () => {
 
     hideOverlay();
 })
-
-/*bouton2.addEventListener("click", async () => {
-    let resultatRetour = await getResponse(inputAgrandi.value);
-    console.log(resultatRetour)
-})*/
 
 
 
