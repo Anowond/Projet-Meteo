@@ -12,7 +12,14 @@
   <script type="module" src="./scripts/background.js" defer></script>
   <script type="module" src="./scripts/main.js" defer></script>
   <script type="module" src="./scripts/popup.js" defer></script>
+  <script type="module" src="./scripts/position.js" defer></script>
   <link rel="stylesheet" href="./styles/styles.css" />
+  <!--Lien css pour Leaflet (la carte)-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!--Lien JS pour Leaflet (la carte)-->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <title>API Météo</title>
 </head>
 
@@ -22,13 +29,10 @@
     <p id="btnPopupFavoris" class="btnPopupFavoris"><img src="./img/star.png" class="star-menu" /></p>
   </div>
   <div class="overlayFavoris" id="overlayFavoris">
-    <div class="popupFavoris" id="popupFavoris">
-      <div id="listFavoris">        
-        <button id="fermerFavoris" class="fermerFavoris fermerPopup">Fermer</button>
-      </div>
-    </div>
+      <button id="fermerFavoris" class="fermerFavoris fermerPopup">Fermer</button>
   </div>
   
+  <h3 id="currentPosition"></h3>
   <div id="popup_container">
     <button id="afficherPopup" class="afficherPopup">Pour rechercher une ville, cliquez ici</button>
     <div id="overlay" class="overlay">
@@ -43,11 +47,10 @@
     </div>
   </div>
   <div class="now">
-    <div class="ville">
-      <p id="ville_localisation"></p>
-      <p>
-        <img src="./img/star_empty.png" id="star_toggle" class="star-menu" />
+    <div class="ville"><p id="favourite_toggle">
+      <img src="./img/star_empty.png" id="star_toggle" class="star-menu"/>
       </p>
+      <p id="ville_localisation"></p>
     </div>
     <div id="main_jour">
       <div id="temps_jour">
@@ -135,6 +138,8 @@
       <p id="temperature_short_demain_night"></p>
     </section>
   </div>
+
+  <div id="map" class="map"></div>
 </body>
 
 </html>
