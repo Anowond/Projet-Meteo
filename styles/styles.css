@@ -13,7 +13,6 @@ p {
   display: flex;
   margin: 20px;
   padding-left: 10px;
-  /*text-align: center;*/
   align-items: center;
   justify-content: space-between;
   background-color: rgba(34, 253, 147, 0.6);
@@ -30,8 +29,8 @@ h2 {
 }
 
 .star-menu {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 #popup_container {

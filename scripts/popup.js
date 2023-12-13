@@ -1,18 +1,3 @@
-/*import getResponse from "./api.js"
-    //recupération des variable par id
-    let inputOrigine = document.getElementById("afficherPopup")    
-    let popupInput = document.getElementById("popupInput")
-    let inputAgrandi = document.getElementById("inputAgrandi")
-    let bouton = document.getElementById("boutonGO")
-    popupInput.style.display = "none";
-
-    //au click de l'input écran
-    inputOrigine.addEventListener("click", () => {
-        //apparition du popup input agrandi
-        popupInput.style.display = "block";
-    });
-    
-*/
 let ville = document.getElementById("ville_localisation");
 let starToggle = document.getElementById("star_toggle")
 let afficherPopup = document.getElementById("afficherPopup")
@@ -32,14 +17,6 @@ afficherPopup.addEventListener("click",()=>{
     input.focus();      
 })
 
-//recuperation de la reponse
-/*btnGO.addEventListener("click", async ()=>{
-
-    //recuperation de la valeur de l'inputagrandi 
-    let recherche = input.value
-    let resultatRetour = await getResponse(recherche);       
-})*/
-
 //fermeture du popup au clic sur bouton fermer
 fermerPopup.addEventListener("click",()=>{
     hideOverlay();
@@ -48,12 +25,6 @@ fermerPopup.addEventListener("click",()=>{
 function hideOverlay() {
     overlay.style.display = "none";
 }
-
-/*document.addEventListener("click", (event)=>{
-    if(!overlay.contains(event.target) && event.target !== overlay){
-        overlay.style.display = "none";
-    }
-})*/
 
 let btnPopupFavoris = document.getElementById("btnPopupFavoris")
 let listFavoris = document.getElementById("listFavoris")
