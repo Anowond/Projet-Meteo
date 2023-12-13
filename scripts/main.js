@@ -1,8 +1,6 @@
-import {getResponse, getAstro} from "./api.js"
+import { getResponse, getAstro } from "./api.js"
 import getPosition from "./localisation.js"
-
-import {hideOverlay} from "./popup.js"
-
+import { hideOverlay } from "./popup.js"
 
 //recupération des éléments html par id pour l'écran principal
 let weatherIconBig = document.getElementById("weatherIconBig")
@@ -18,6 +16,7 @@ let aqi = document.getElementById("aqi_today")
 let uv = document.getElementById("uv_today")
 let sunrise = document.getElementById("soleil_leve")
 let sunset = document.getElementById("soleil_couche")
+let map = document.getElementById("map")
 
 // Récupération des éléments HTML par id pour la partie "prévisions du jour"
 let weatherIconLittleMorning = document.getElementById("weatherIconLittleMorning")
@@ -81,21 +80,27 @@ async function usePos() {
 
             case 1:
                 aqi.textContent = "AQI: Bonne"
+                aqi.classList.add("aqi1")
                 break;
             case 2:
                 aqi.textContent = "AQI: Modérée"
+                aqi.classList.add("aqi2")
                 break;
             case 3:
                 aqi.textContent = "AQI: Dégradée"
+                aqi.classList.add("aqi3")
                 break;
             case 4:
                 aqi.textContent = "AQI: Nocive"
+                aqi.classList.add("aqi4")
                 break;
             case 5:
                 aqi.textContent = "AQI: Trés Nocive"
+                aqi.classList.add("aqi5")
                 break;
             case 6:
                 aqi.textContent = "AQI: Dangereuse"
+                aqi.classList.add("aqi6")
                 break;
         }
 
@@ -137,6 +142,16 @@ async function usePos() {
         weather_night_demain.textContent = response.forecast.forecastday[1].hour[23].condition.text
         temperature_short_demain_night.textContent = response.forecast.forecastday[1].hour[23].temp_c
 
+        //Création de la carte
+        let map = L.map('map').setView([latitude, longitude], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([latitude, longitude]).addTo(map)
+            .bindPopup('Vous êtes ici')
+
     } catch (error) {
         console.error(error);
     }
@@ -147,16 +162,6 @@ async function usePos() {
 //   Appelez la fonction usepos
 usePos();
 
-
-//popupInput.style.display = "none";
-
-//au click de l'input écran
-/*inputOrigine.addEventListener("click", () => {
-    //apparition du popup input agrandi
-    popupInput.style.display = "block";
-})*/
-
-//récupération des données retourné par l'API
 
 //recuperation de la reponse
 bouton2.addEventListener("click", async () => {
@@ -243,13 +248,31 @@ bouton2.addEventListener("click", async () => {
     weather_night_demain.textContent = resultatRetour.forecast.forecastday[1].hour[23].condition.text
     temperature_short_demain_night.textContent = resultatRetour.forecast.forecastday[1].hour[23].temp_c
 
+    //Création de la carte
+
+    //Réinitialisation de la carte pour un nouvel affichage 
+    map = L.DomUtil.get('map');
+    if (map != null) {
+        map._leaflet_id = null;
+    }
+
+    // Génération de la nouvelle carte
+    map = L.map('map', {
+        center: [resultatRetour.location.lat, resultatRetour.location.lon],
+        zoom: 5
+    });
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([resultatRetour.location.lat, resultatRetour.location.lon]).addTo(map)
+        .bindPopup('Vous êtes ici')
+
+
+
     hideOverlay();
 })
-
-/*bouton2.addEventListener("click", async () => {
-    let resultatRetour = await getResponse(inputAgrandi.value);
-    console.log(resultatRetour)
-})*/
 
 
 
