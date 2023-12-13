@@ -1,18 +1,3 @@
-/*import getResponse from "./api.js"
-    //recupération des variable par id
-    let inputOrigine = document.getElementById("afficherPopup")    
-    let popupInput = document.getElementById("popupInput")
-    let inputAgrandi = document.getElementById("inputAgrandi")
-    let bouton = document.getElementById("boutonGO")
-    popupInput.style.display = "none";
-
-    //au click de l'input écran
-    inputOrigine.addEventListener("click", () => {
-        //apparition du popup input agrandi
-        popupInput.style.display = "block";
-    });
-    
-*/
 let ville = document.getElementById("ville_localisation");
 let starToggle = document.getElementById("star_toggle")
 let afficherPopup = document.getElementById("afficherPopup")
