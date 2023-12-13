@@ -1,5 +1,4 @@
 const getResponse = async (location) => {
-
     const options = {
         method: 'GET',
         url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
@@ -12,20 +11,13 @@ const getResponse = async (location) => {
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
-
-
     try {
-
         const response = await axios.request(options);
         //console.log(options);
         return response.data
-
     } catch (error) {
-
         console.error(error);
-
     }
-
 }
 
 const getAstro = async (location) => {
