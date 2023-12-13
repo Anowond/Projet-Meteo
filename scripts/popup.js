@@ -32,14 +32,6 @@ afficherPopup.addEventListener("click",()=>{
     input.focus();      
 })
 
-//recuperation de la reponse
-/*btnGO.addEventListener("click", async ()=>{
-
-    //recuperation de la valeur de l'inputagrandi 
-    let recherche = input.value
-    let resultatRetour = await getResponse(recherche);       
-})*/
-
 //fermeture du popup au clic sur bouton fermer
 fermerPopup.addEventListener("click",()=>{
     hideOverlay();
@@ -49,28 +41,23 @@ function hideOverlay() {
     overlay.style.display = "none";
 }
 
-/*document.addEventListener("click", (event)=>{
-    if(!overlay.contains(event.target) && event.target !== overlay){
-        overlay.style.display = "none";
-    }
-})*/
-
 let btnPopupFavoris = document.getElementById("btnPopupFavoris")
 let listFavoris = document.getElementById("listFavoris")
 let overlayFavoris = document.getElementById("overlayFavoris")
 let popup_container = document.getElementById("popup_container")
 let fermerFavoris = document.getElementById("fermerFavoris")
 
+//mise en cache du bouton appel popup à l'ouverture du popup favoris
 btnPopupFavoris.addEventListener("click",()=>{
     overlayFavoris.style.display = "block";
     popup_container.style.visibility = "hidden";
 
 })
 
+//remise en place du bouton appel popup à la fermeture du popup favoris 
 fermerFavoris.addEventListener("click",()=>{
     overlayFavoris.style.display = "none"
-    popup_container.style.visibility = "visible"
-   
+    popup_container.style.visibility = "visible"   
 })
 
 //Création d'un tableau favorite

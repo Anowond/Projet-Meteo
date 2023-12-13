@@ -1,6 +1,6 @@
 import {getResponse} from "./api.js"
-//let weatherToday = document.getElementById("weather_today").textContent;
 
+//changement du background en fonction du temps  
 function backgroundUpdate(resultatRetour){
     let weatherCode = resultatRetour.current.condition.code;
     console.log(weatherCode)
@@ -75,8 +75,8 @@ function backgroundUpdate(resultatRetour){
             break;
         case 1255 :
         case 1258 :
-            document.body.style.backgroundImage = 'url("../img/snow_shower.png")';
-            break;
+            document.body.style.backgroundImage = 'url("../img/snow_shower.jpg")';
+            break; 
         default :
             document.body.style.backgroundImage = "url('../img/cloud.jpg')";
             break;
