@@ -1,6 +1,6 @@
-import {getResponse} from "./api.js"
+/*import getResponse from "./api.js"
     //recupération des variable par id
-    /*let inputOrigine = document.getElementById("afficherPopup")    
+    let inputOrigine = document.getElementById("afficherPopup")    
     let popupInput = document.getElementById("popupInput")
     let inputAgrandi = document.getElementById("inputAgrandi")
     let bouton = document.getElementById("boutonGO")
@@ -31,24 +31,52 @@ afficherPopup.addEventListener("click",()=>{
 })
 
 //recuperation de la reponse
-btnGO.addEventListener("click", async ()=>{
+/*btnGO.addEventListener("click", async ()=>{
 
     //recuperation de la valeur de l'inputagrandi 
     let recherche = input.value
     let resultatRetour = await getResponse(recherche);       
-})
+})*/
 
 //fermeture du popup au clic sur bouton fermer
 fermerPopup.addEventListener("click",()=>{
-        overlay.style.display = "none";
+    hideOverlay();
 })
 
-
-
-
+function hideOverlay() {
+    overlay.style.display = "none";
+}
 
 /*document.addEventListener("click", (event)=>{
     if(!overlay.contains(event.target) && event.target !== overlay){
         overlay.style.display = "none";
     }
 })*/
+
+let btnPopupFavoris = document.getElementById("btnPopupFavoris")
+let popupFavoris = document.getElementById("popupFavoris")
+let overlayFavoris = document.getElementById("overlayFavoris")
+let popup_container = document.getElementById("popup_container")
+let fermerFavoris = document.getElementById("fermerFavoris")
+let buttonSupprime =document.getElementById("buttonSupprime")
+let localisation = document.getElementById("localisation")
+
+btnPopupFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "block";
+    popup_container.style.visibility = "hidden";
+
+})
+
+fermerFavoris.addEventListener("click",()=>{
+    overlayFavoris.style.display = "none"
+    popup_container.style.visibility = "visible"
+   
+})
+
+buttonSupprime.addEventListener("click",()=>{
+    localisation.textContent.remove()
+})
+
+
+
+export {hideOverlay}

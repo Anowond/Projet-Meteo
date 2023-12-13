@@ -1,5 +1,7 @@
-import { getResponse, getAstro } from "./api.js"
+import {getResponse, getAstro} from "./api.js"
 import getPosition from "./localisation.js"
+
+import {hideOverlay} from "./popup.js"
 
 
 //recupération des éléments html par id pour l'écran principal
@@ -8,6 +10,7 @@ let currentPosition = document.getElementById("currentPosition")
 let inputAgrandi = document.getElementById("inputAgrandi")
 let bouton2 = document.getElementById("boutonGO")
 let ville = document.getElementById("ville_localisation")
+let weather_today = document.getElementById("weather_today")
 let temperature = document.getElementById("temperature")
 let wet = document.getElementById("wet_today")
 let wind = document.getElementById("wind_today")
@@ -159,9 +162,11 @@ usePos();
 bouton2.addEventListener("click", async () => {
     let resultatRetour = await getResponse(inputAgrandi.value);
     let astro = await getAstro(inputAgrandi.value)
-    console.log(resultatRetour, astro)
+    console.log(resultatRetour)
     weatherIconBig.src = resultatRetour.current.condition.icon
+    weatherIconBig.alt = resultatRetour.current.condition.text
     ville.textContent = `${resultatRetour.location.name},${resultatRetour.location.country}`
+    weather_today.textContent = resultatRetour.current.condition.text
     temperature.textContent = `${resultatRetour.current.temp_c}° Celsius`
     wet.textContent = `Humidité: ${resultatRetour.current.humidity}%`
     wind.textContent = `Vent: ${resultatRetour.current.wind_kph}Km/h`
@@ -172,21 +177,27 @@ bouton2.addEventListener("click", async () => {
 
         case 1:
             aqi.textContent = "AQI: Bonne"
+            aqi.classList.add("aqi1")
             break;
         case 2:
             aqi.textContent = "AQI: Modérée"
+            aqi.classList.add("aqi2")
             break;
         case 3:
             aqi.textContent = "AQI: Dégradée"
+            aqi.classList.add("aqi3")
             break;
         case 4:
             aqi.textContent = "AQI: Nocive"
+            aqi.classList.add("aqi4")
             break;
         case 5:
             aqi.textContent = "AQI: Trés Nocive"
+            aqi.classList.add("aqi5")
             break;
         case 6:
             aqi.textContent = "AQI: Dangereuse"
+            aqi.classList.add("aqi6")
             break;
     }
 
@@ -196,18 +207,22 @@ bouton2.addEventListener("click", async () => {
 
     // Attribution des valeurs tirées de l'API pour les prévisions du jour
     weatherIconLittleMorning.src = resultatRetour.forecast.forecastday[0].hour[6].condition.icon
+    weatherIconLittleMorning.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
     weather_morning.textContent = resultatRetour.forecast.forecastday[0].hour[6].condition.text
     temperatureMorning.textContent = resultatRetour.forecast.forecastday[0].hour[6].temp_c
 
     weatherIconLittleAfternoon.src = resultatRetour.forecast.forecastday[0].hour[11].condition.icon
+    weatherIconLittleAfternoon.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
     weather_afternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].condition.text
     temperatureAfternoon.textContent = resultatRetour.forecast.forecastday[0].hour[11].temp_c
 
     weatherIconLittleEvening.src = resultatRetour.forecast.forecastday[0].hour[16].condition.icon
+    weatherIconLittleEvening.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
     weather_evening.textContent = resultatRetour.forecast.forecastday[0].hour[16].condition.text
     temperatureEvening.textContent = resultatRetour.forecast.forecastday[0].hour[16].temp_c
 
     weatherIconLittleNight.src = resultatRetour.forecast.forecastday[0].hour[23].condition.icon
+    weatherIconLittleNight.alt = resultatRetour.forecast.forecastday[0].hour[6].condition.text
     weather_night.textContent = resultatRetour.forecast.forecastday[0].hour[23].condition.text
     temperatureNight.textContent = resultatRetour.forecast.forecastday[0].hour[23].temp_c
 
@@ -228,6 +243,7 @@ bouton2.addEventListener("click", async () => {
     weather_night_demain.textContent = resultatRetour.forecast.forecastday[1].hour[23].condition.text
     temperature_short_demain_night.textContent = resultatRetour.forecast.forecastday[1].hour[23].temp_c
 
+    hideOverlay();
 })
 
 /*bouton2.addEventListener("click", async () => {
