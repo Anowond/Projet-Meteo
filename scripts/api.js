@@ -1,3 +1,5 @@
+import APIkey from "../.git"
+
 const getResponse = async (location) => {
     const options = {
         method: 'GET',
@@ -9,7 +11,7 @@ const getResponse = async (location) => {
             lang: "fr"
         },
         headers: {
-            'X-RapidAPI-Key': '7653558c72msh4744c32ce35a248p148572jsn1385e9bed9b2',
+            'X-RapidAPI-Key': APIkey,
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
@@ -29,7 +31,7 @@ const getAstro = async (location) => {
         url: 'https://weatherapi-com.p.rapidapi.com/astronomy.json',
         params: { q: `${location}` },
         headers: {
-            'X-RapidAPI-Key': '7653558c72msh4744c32ce35a248p148572jsn1385e9bed9b2',
+            'X-RapidAPI-Key': APIkey,
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
         }
     };
