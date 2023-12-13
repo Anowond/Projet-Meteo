@@ -1,7 +1,9 @@
 import { getResponse, getAstro } from "./api.js"
 import getPosition from "./localisation.js"
-import { hideOverlay, arrayFavorite } from "./popup.js"
-import { backgroundUpdate } from "./background.js"
+import { hideOverlay, favoris } from "./popup.js"
+
+
+favoris()
 
 //recupération des éléments html par id pour l'écran principal
 let weatherIconBig = document.getElementById("weatherIconBig")
